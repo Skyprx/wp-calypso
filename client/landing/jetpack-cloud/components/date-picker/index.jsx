@@ -145,18 +145,22 @@ class DatePicker extends Component {
 						onClick={ this.goToNextDay }
 						onKeyDown={ this.onSpace( this.goToNextDay ) }
 					>
-						<span
-							className={ classNames( 'date-picker__display-date', {
-								disabled: ! this.canGoToNextDay(),
-							} ) }
-						>
-							{ nextDisplayDate }
-						</span>
+						<div className="date-picker__next-date-link">
+							<span
+								className={ classNames( 'date-picker__display-date', {
+									disabled: ! this.canGoToNextDay(),
+								} ) }
+							>
+								{ nextDisplayDate }
+							</span>
 
-						<Button compact borderless className="date-picker__button--next">
-							<Gridicon icon="chevron-right" className={ ! this.canGoToNextDay() && 'disabled' } />
-						</Button>
-
+							<Button compact borderless className="date-picker__button--next">
+								<Gridicon
+									icon="chevron-right"
+									className={ ! this.canGoToNextDay() && 'disabled' }
+								/>
+							</Button>
+						</div>
 						<a className="date-picker__search-link" href={ backupActivityPath( siteSlug ) }>
 							<Gridicon icon="search" className="date-picker__search-icon" />
 						</a>

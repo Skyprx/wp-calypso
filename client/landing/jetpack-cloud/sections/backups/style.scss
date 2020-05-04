@@ -14,9 +14,7 @@
 	background: var( --studio-white );
 	margin-left: -16px;
 	margin-right: -16px;
-	padding-left: 16px;
-	padding-right: 16px;
-	padding-top: 24px;
+	padding: 16px 16px 0;
 
 	@include breakpoint( '>660px' ) {
 		background: var( --color-surface-backdrop );
