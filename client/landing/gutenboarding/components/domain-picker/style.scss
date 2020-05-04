@@ -49,6 +49,10 @@ $domain-picker__suggestion-item-height: 24px;
 	margin-bottom: 27px;
 }
 
+.domain-picker__header-group {
+	flex-grow: 1;
+}
+
 .domain-picker__header-title {
 	@include onboarding-font-recoleta;
 	font-size: 26px;
@@ -232,11 +236,6 @@ $domain-picker__suggestion-item-height: 24px;
 	padding-right: 30px;
 }
 
-.domain-picker__confirm-button {
-	position: relative;
-	top: 5px;
-}
-
 .domain-picker__more-button {
 	visibility: hidden; // @TODO: remove this once mobile layout is ready
 
@@ -247,5 +246,11 @@ $domain-picker__suggestion-item-height: 24px;
 	&.components-button {
 		@include onboarding-medium-text;
 		color: var( --color-neutral-100 );
+	}
+}
+
+.domain-picker__cancel-button {
+	&.components-button {
+		margin-left: 10px;
 	}
 }
