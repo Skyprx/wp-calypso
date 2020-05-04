@@ -43,8 +43,6 @@ interface Props {
 	scanState: Scan | null;
 	scanProgress?: number;
 	isInitialScan: boolean;
-	lastScanTimestamp: number;
-	nextScanTimestamp: number;
 	moment: Function;
 	dispatchRecordTracksEvent: Function;
 }
@@ -112,8 +110,11 @@ class ScanPage extends Component< Props > {
 	}
 
 	renderScanOkay() {
-		const { siteID, siteSlug, moment, lastScanTimestamp, dispatchRecordTracksEvent } = this.props;
+		const { siteID, siteSlug, moment, scanState, dispatchRecordTracksEvent } = this.props;
 
+		const lastScanTimestamp = scanState?.mostRecent?.timestamp
+			? Date.parse( scanState?.mostRecent?.timestamp )
+			: '';
 		return (
 			<>
 				<SecurityIcon />
@@ -270,8 +271,6 @@ export default connect(
 		const siteUrl = getSiteUrl( state, siteID );
 		const siteSlug = getSelectedSiteSlug( state );
 		const scanState = getSiteScanState( state, siteID );
-		const lastScanTimestamp = Date.now() - 5700000; // 1h 35m.
-		const nextScanTimestamp = Date.now() + 5700000;
 		const scanProgress = getSiteScanProgress( state, siteID );
 		const isInitialScan = getSiteScanIsInitial( state, siteID );
 
@@ -283,8 +282,6 @@ export default connect(
 			scanState,
 			scanProgress,
 			isInitialScan,
-			lastScanTimestamp,
-			nextScanTimestamp,
 		};
 	},
 	{ dispatchRecordTracksEvent: recordTracksEvent }
